@@ -3,6 +3,7 @@
 exclude:
   - vendor/*
   - node_modules/*
+  - app/views/devise/**/*
 
 linters:
   LineLength:
