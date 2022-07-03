@@ -16,4 +16,7 @@ ci-setup:
 
 check: lint test
 
+deploy:
+	git push heroku main
+
 .PHONY: test
