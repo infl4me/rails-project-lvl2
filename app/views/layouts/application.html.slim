@@ -8,7 +8,7 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
+  body.d-flex.flex-column.h-100
     = render 'layouts/shared/header'
-    main
+    main.container.my-4
       = yield
