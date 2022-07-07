@@ -1,0 +1,7 @@
+ru:
+  app_name: Коллективный блог 
+  auth:
+    signup: Регистрация
+    signin: Вход
+    signout: Выход
+  posts:
