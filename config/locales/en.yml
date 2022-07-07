@@ -5,3 +5,4 @@ en:
     signin: Sign In
     signout: Sign Out
   posts:
+    new_post: New Post

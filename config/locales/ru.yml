@@ -5,3 +5,4 @@ ru:
     signin: Вход
     signout: Выход
   posts:
+    new_post: Новая статья

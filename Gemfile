@@ -65,4 +65,5 @@ gem 'rails-i18n'
 gem 'rollbar'
 gem 'rubocop', require: false
 gem 'rubocop-rails'
+gem 'simple_form'
 gem 'slim_lint'
