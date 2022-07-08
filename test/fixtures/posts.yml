@@ -7,12 +7,5 @@
 one:
   title: title1
   body: body1
-  user: user_one
-  category: category_one
-
-two:
-  title: title2
-  body: body2
-  user: user_one
-  category: category_one
-
+  user_id: 1
+  category_id: 1

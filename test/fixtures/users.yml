@@ -1,13 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   first_name: John 
-  last_name: Ivanov
-  email: john@ivanov.com
-  encrypted_password: john@ivanov.com
-
-two:
-  first_name: Ivan
   last_name: Doe
-  email: ivan@doe.com
-  encrypted_password: ivan@doe.com
+  email: john@doe.com
+  encrypted_password: john@doe.com
