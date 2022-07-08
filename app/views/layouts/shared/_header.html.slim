@@ -6,6 +6,8 @@ header.container.mb-2
     ul.nav.nav-pills
       - if user_signed_in?
         li.nav-item
+          = link_to t('posts.new_post'), new_post_path, class: 'nav-link link-dark'
+        li.nav-item
           = link_to t('auth.signout'), destroy_user_session_path, method: :delete, class: 'nav-link link-dark'
       - else
         li.nav-item.me-2

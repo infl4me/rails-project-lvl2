@@ -29,6 +29,11 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'faker'
+  gem 'minitest-power_assert'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails'
+  gem 'slim_lint'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
 end
@@ -60,10 +65,6 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'devise'
-gem 'minitest-power_assert'
 gem 'rails-i18n'
 gem 'rollbar'
-gem 'rubocop', require: false
-gem 'rubocop-rails'
 gem 'simple_form'
-gem 'slim_lint'

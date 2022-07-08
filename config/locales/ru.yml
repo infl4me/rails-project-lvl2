@@ -6,3 +6,4 @@ ru:
     signout: Выход
   posts:
     new_post: Новая статья
+    likes_count: "Понравилось: %{count}"

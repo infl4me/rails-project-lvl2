@@ -2,37 +2,20 @@ p#notice
   = notice
 h1
   = t('app_name')
-table
-  thead
-    tr
-      th
-        | Title
-      th
-        | Body
-      th
-        | User
-      th
-        | Category
-      th[colspan="3"]
-  tbody
-    - @posts.each do |post|
-      tr
-
-      td
-        = post.title
-      td
-        = post.body
-      td
-        = post.user_id
-      td
-        = post.category_id
-      td
-        = link_to 'Show', post
-      td
-        = link_to 'Edit', edit_post_path(post)
-      td
-        = link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
-
-- user_signed_in?
-  br
-  = link_to 'New Post', new_post_path
+.row
+  - @posts.each do |post|
+    .col-md-12
+      .card.mb-3
+        .card-body
+          = link_to '', post_path(post), class: 'stretched-link'
+          h2.h5.card-title
+            = post.title
+          .card-text.mb-2
+            = post.body
+          .text-right.small.text-muted.mt-auto
+            span.me-2
+              = t('posts.likes_count', count: 0)
+            span.me-2
+              = distance_of_time_in_words(Time.current, post.created_at)
+            span
+              = post.creator.email

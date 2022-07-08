@@ -6,3 +6,6 @@ en:
     signout: Sign Out
   posts:
     new_post: New Post
+    likes_count: "Likes: %{count}"
+    title: Title
+    body: Body
