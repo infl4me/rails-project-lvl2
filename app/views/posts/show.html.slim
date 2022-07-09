@@ -1,21 +1,24 @@
-p#notice
-  = notice
 p
   strong
-    | Title:
+    = "#{t('posts.title')}: "
   = @post.title
 p
   strong
-    | Body:
+    = "#{t('posts.body')}: "
   = @post.body
 p
   strong
-    | User:
+    = "#{t('posts.created_by')}: "
   = @post.creator.email
 p
   strong
-    | Category:
+    = "#{t('posts.category')}: "
   = @post.category_id
-= link_to 'Edit', edit_post_path(@post)
-|  |
-= link_to 'Back', posts_path
+
+= simple_form_for @comment, url: post_comments_path(@post) do |f|
+  = f.input :content, label: false
+  = f.button :submit, t('posts.create_comment'), class: 'btn btn-primary mt-3'
+
+h2.mt-5 = "#{t('posts.comments')}:"
+- @post.comments.each do |comment|
+  p = comment.content

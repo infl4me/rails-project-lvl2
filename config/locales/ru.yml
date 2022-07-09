@@ -6,4 +6,11 @@ ru:
     signout: Выход
   posts:
     new_post: Новая статья
+    editing_post: Редактирование статьи
+    create_comment: Создать комментарий
+    comments: Комментарии
     likes_count: "Понравилось: %{count}"
+    title: Заголовок
+    body: Текст
+    created_by: Создано
+    category: Категория

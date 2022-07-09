@@ -6,6 +6,11 @@ en:
     signout: Sign Out
   posts:
     new_post: New Post
+    editing_post: Editing Post
+    create_comment: Create Comment
+    comments: Comments
     likes_count: "Likes: %{count}"
     title: Title
     body: Body
+    created_by: Created By
+    category: Category

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :posts, except: ['index']
   root to: 'posts#index'
+  resources :posts, except: ['index'] do
+    resources :comments, only: %w[create]
+  end
 end
