@@ -20,5 +20,5 @@ p
   = f.button :submit, t('posts.create_comment'), class: 'btn btn-primary mt-3'
 
 h2.mt-5 = "#{t('posts.comments')}:"
-- @post.comments.each do |comment|
-  p = comment.content
+- @post.comments.shallow.each do |comment|
+  = render 'comment', comment: comment, depth_level: 1

@@ -1,0 +1,5 @@
+.ms-3
+  p
+    = "[#{comment.id}]#{comment.content}_DP:#{depth_level}"
+  - comment.children.each do |child|
+    = render 'comment', comment: child, depth_level: depth_level + 1
