@@ -21,4 +21,4 @@ p
 
 h2.mt-5 = "#{t('posts.comments')}:"
 - @post.comments.shallow.each do |comment|
-  = render 'comment', comment: comment, depth_level: 1
+  = render 'posts/comment', comment: comment

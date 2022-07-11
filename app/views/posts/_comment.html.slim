@@ -1,5 +1,23 @@
-.ms-3
-  p
-    = "[#{comment.id}]#{comment.content}_DP:#{depth_level}"
-  - comment.children.each do |child|
-    = render 'comment', comment: child, depth_level: depth_level + 1
+.card.mb-4
+  .card-header.small.mb-2.d-flex
+    div id="comment-#{comment.id}"
+      span.font-weight-bold
+        = comment.creator.email
+      span.mx-2.font-weight-light
+        = distance_of_time_in_words(Time.current, comment.created_at)
+  .card-body.d-flex
+    .w-100
+      .mb-3
+        = comment.content
+      .small
+        - comment.children.each do |child|
+          = render 'posts/comment', comment: child
+  hr.my-2
+  .mb-2.m-4
+    a.d-block.small.text-muted data-bs-toggle="collapse" href="#new_post_comment-#{comment.id}"
+      = t('posts.reply')
+    .collapse data-bs-target="#new_post_comment-#{comment.id}" id="new_post_comment-#{comment.id}"
+      = simple_form_for @comment, url: post_comments_path(@post), namespace: "child_comment_form_#{comment.id}" do |f|
+        = f.input :content, label: false, error: false
+        = f.input :parent_id, as: :hidden, input_html: { value: comment.id }
+        = f.button :submit, t('posts.create_comment'), class: 'btn btn-primary mt-3'

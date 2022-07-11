@@ -5,9 +5,9 @@ end
 if Rails.env.development?
   user = if User.count.zero?
            User.create(
-             email: 'john@doe.com',
-             password: 'encrypted_password',
-             password_confirmation: 'encrypted_password'
+             email: 'asd@dasd',
+             password: 'asd@dasd',
+             password_confirmation: 'asd@dasd'
            )
          else
            User.first
@@ -20,4 +20,17 @@ if Rails.env.development?
       category_id: Category.first.id
     )
   end
+
+  3.times do
+    user.post_comments.create(
+      content: Faker::Lorem.paragraph(sentence_count: 2),
+      post: Post.first
+    )
+  end
+
+  user.post_comments.create(
+    content: Faker::Lorem.paragraph(sentence_count: 2),
+    post: Post.first,
+    parent: Post.first.comments.first
+  )
 end

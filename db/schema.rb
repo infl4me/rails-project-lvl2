@@ -21,10 +21,12 @@ ActiveRecord::Schema.define(version: 2022_07_10_175550) do
   create_table "post_comments", force: :cascade do |t|
     t.integer "post_id", null: false
     t.text "content"
+    t.integer "creator_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_post_comments_on_ancestry"
+    t.index ["creator_id"], name: "index_post_comments_on_creator_id"
     t.index ["post_id"], name: "index_post_comments_on_post_id"
   end
 
@@ -54,6 +56,7 @@ ActiveRecord::Schema.define(version: 2022_07_10_175550) do
   end
 
   add_foreign_key "post_comments", "posts"
+  add_foreign_key "post_comments", "users", column: "creator_id"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users", column: "creator_id"
 end
