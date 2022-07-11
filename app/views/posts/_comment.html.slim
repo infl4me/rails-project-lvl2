@@ -9,7 +9,7 @@
     .w-100
       .mb-3
         = comment.content
-      .small
+      div
         - comment.children.each do |child|
           = render 'posts/comment', comment: child
   hr.my-2

@@ -13,7 +13,7 @@ p
 p
   strong
     = "#{t('posts.category')}: "
-  = @post.category_id
+  = @post.category.name
 
 = simple_form_for @comment, url: post_comments_path(@post) do |f|
   = f.input :content, label: false
