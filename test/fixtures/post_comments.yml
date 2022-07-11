@@ -2,8 +2,6 @@
 
 one:
   post: one
-  content: MyText
+  content: blabla
+  creator_id: 1
 
-two:
-  post: two
-  content: MyText
