@@ -5,13 +5,19 @@ require:
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.0.1
   Exclude:
-    - 'bin/**'
-    - 'db/schema.rb'
-    - 'db/migrate/**'
+    - 'code/bin/**'
+    - 'code/db/schema.rb'
+    - 'code/db/migrate/**'
+    - 'code/vendor/**/*'
+    - 'code/node_modules/**/*'
     - 'vendor/**/*'
     - 'node_modules/**/*'
+    - 'code/tmp/**/*'
+  SuggestExtensions: false
+
+Rails:
+  Enabled: true
 
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -37,5 +43,5 @@ Metrics/BlockLength:
 Style/AsciiComments:
   Enabled: false
 
-Style/FrozenStringLiteralComment:
+Metrics/ParameterLists:
   Enabled: false
