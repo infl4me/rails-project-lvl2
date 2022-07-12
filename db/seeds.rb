@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 %w[development business ruby js job].each do |category|
   Category.create(name: category)
 end
