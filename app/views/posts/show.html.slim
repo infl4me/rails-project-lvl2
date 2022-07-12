@@ -11,25 +11,26 @@ p
     = "#{t('posts.category')}: "
   = @post.category.name
 
-.d-flex.justify-content-between.mt-5
-  div
-    span.me-2
-      = @post.creator.email
-    span
-      = distance_of_time_in_words(Time.current, @post.created_at)
-  div
-    span.me-2
-      = @post.likes.count
-    - like = current_user.find_like(@post)
-    - if like.nil?
-      = link_to 'Like', post_likes_path(@post), method: :post
-    - else
-      = link_to 'Unlike', post_like_path(@post, like), method: :delete
+- if user_signed_in?
+  .d-flex.justify-content-between.mt-5
+    div
+      span.me-2
+        = @post.creator.email
+      span
+        = distance_of_time_in_words(Time.current, @post.created_at)
+    div
+      span.me-2
+        = @post.likes.count
+      - like = current_user.find_like(@post)
+      - if like.nil?
+        = link_to 'Like', post_likes_path(@post), method: :post
+      - else
+        = link_to 'Unlike', post_like_path(@post, like), method: :delete
 
-= simple_form_for @comment, url: post_comments_path(@post) do |f|
-  = f.input :content, label: false
-  = f.button :submit, t('posts.create_comment'), class: 'btn btn-primary mt-3'
+  = simple_form_for @comment, url: post_comments_path(@post) do |f|
+    = f.input :content, label: false
+    = f.button :submit, t('posts.create_comment'), class: 'btn btn-primary mt-3'
 
-h2.mt-5 = "#{t('posts.comments')}:"
-- @post.comments.shallow.each do |comment|
-  = render 'posts/comment', comment: comment
+  h2.mt-5 = "#{t('posts.comments')}:"
+  - @post.comments.shallow.each do |comment|
+    = render 'posts/comment', comment: comment
