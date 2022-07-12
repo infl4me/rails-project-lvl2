@@ -6,5 +6,10 @@ class User < ApplicationRecord
 
   has_many :posts, foreign_key: 'creator_id', dependent: :destroy, inverse_of: :creator
   has_many :post_comments, foreign_key: 'creator_id', dependent: :destroy, inverse_of: :creator
-  has_many :post_likes, foreign_key: 'creator_id', dependent: :destroy, inverse_of: :creator
+  has_many :post_likes, dependent: :destroy
+  has_many :posts_with_likes, source: :post, through: :post_likes
+
+  def find_like(post)
+    post_likes.find_by(post_id: post.id)
+  end
 end

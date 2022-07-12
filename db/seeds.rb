@@ -5,9 +5,9 @@ end
 if Rails.env.development?
   user = if User.count.zero?
            User.create(
-             email: 'asd@dasd',
-             password: 'asd@dasd',
-             password_confirmation: 'asd@dasd'
+             email: 'asd@asd',
+             password: 'asd@asd',
+             password_confirmation: 'asd@asd'
            )
          else
            User.first

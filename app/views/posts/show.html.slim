@@ -8,12 +8,23 @@ p
   = @post.body
 p
   strong
-    = "#{t('posts.created_by')}: "
-  = @post.creator.email
-p
-  strong
     = "#{t('posts.category')}: "
   = @post.category.name
+
+.d-flex.justify-content-between.mt-5
+  div
+    span.me-2
+      = @post.creator.email
+    span
+      = distance_of_time_in_words(Time.current, @post.created_at)
+  div
+    span.me-2
+      = @post.likes.count
+    - like = current_user.find_like(@post)
+    - if like.nil?
+      = link_to 'Like', post_likes_path(@post), method: :post
+    - else
+      = link_to 'Unlike', post_like_path(@post, like), method: :delete
 
 = simple_form_for @comment, url: post_comments_path(@post) do |f|
   = f.input :content, label: false

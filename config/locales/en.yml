@@ -4,6 +4,8 @@ en:
     signup: Register
     signin: Sign In
     signout: Sign Out
+  errors:
+    general: Something went wrong
   posts:
     new_post: New Post
     editing_post: Editing Post

@@ -1,10 +1,12 @@
 class CreatePostLikes < ActiveRecord::Migration[6.1]
   def change
     create_table :post_likes do |t|
-      t.references :creator, null: false, foreign_key: { to_table: :users }
-      t.references :post, null: false, foreign_key: true
+      t.belongs_to :user
+      t.belongs_to :post
 
       t.timestamps
     end
+
+    add_index :post_likes, [:user_id, :post_id], unique: true
   end
 end

@@ -4,6 +4,8 @@ ru:
     signup: Регистрация
     signin: Вход
     signout: Выход
+  errors:
+    general: Что-то пошло не так
   posts:
     new_post: Новая статья
     editing_post: Редактирование статьи
