@@ -2,7 +2,7 @@
   .card-header.small.mb-2.d-flex
     div id="comment-#{comment.id}"
       span.font-weight-bold
-        = comment.creator.email
+        = comment.user.email
       span.mx-2.font-weight-light
         = distance_of_time_in_words(Time.current, comment.created_at)
   .card-body.d-flex
