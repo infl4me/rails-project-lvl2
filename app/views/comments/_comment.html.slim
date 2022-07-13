@@ -11,7 +11,7 @@
         = comment.content
       div
         - comment.children.each do |child|
-          = render 'posts/comment', comment: child
+          = render 'comments/comment', comment: child
   hr.my-2
   .mb-2.m-4
     a.d-block.small.text-muted data-bs-toggle="collapse" href="#new_post_comment-#{comment.id}"

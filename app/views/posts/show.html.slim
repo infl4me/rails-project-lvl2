@@ -34,4 +34,4 @@ p
 - unless shallow_comments.empty?
   h2.mt-5 = "#{t('posts.comments')}:"
   - @post.comments.shallow.each do |comment|
-    = render 'posts/comment', comment: comment
+    = render 'comments/comment', comment: comment
