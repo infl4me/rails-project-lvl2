@@ -30,6 +30,8 @@ p
   = f.input :content, label: false
   = f.button :submit, t('posts.create_comment'), class: 'btn btn-primary mt-3'
 
-h2.mt-5 = "#{t('posts.comments')}:"
-- @post.comments.shallow.each do |comment|
-  = render 'posts/comment', comment: comment
+- shallow_comments = @post.comments.shallow
+- if !shallow_comments.empty?
+  h2.mt-5 = "#{t('posts.comments')}:"
+  - @post.comments.shallow.each do |comment|
+    = render 'posts/comment', comment: comment
