@@ -4,12 +4,12 @@ class LikesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @like = PostLike.new(post_id: params[:post_id], user_id: current_user.id)
+    @post = Post.find(params[:post_id])
+    @like = @post.likes.new(user: current_user)
 
     if @like.save
-      redirect_to post_path(@like.post)
+      redirect_to post_path(@post)
     else
-      @post = @like.post
       redirect_to(@post, alert: t('errors.general'))
     end
   end

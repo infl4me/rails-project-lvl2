@@ -9,16 +9,16 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:one)
   end
 
-  test 'should not increment the like more than once from single user' do
+  test 'should not increment more than once from single user' do
     assert_difference('PostLike.count') do
       post post_likes_path(posts(:one))
-      post post_likes_path(posts(:one)) # should not increment twice
+      post post_likes_path(posts(:one))
     end
 
     assert_redirected_to post_path(posts(:one))
   end
 
-  test 'should not decrement the like more than once from single user' do
+  test 'should not decrement more than once from single user' do
     post post_likes_path(posts(:one))
     assert_difference('PostLike.count', -1) do
       like_id = PostLike.last.id

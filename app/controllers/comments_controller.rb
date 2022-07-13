@@ -4,13 +4,13 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @comment = PostComment.new(comment_params.merge(post_id: params[:post_id], user: current_user))
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.new(comment_params.merge(user: current_user))
 
     if @comment.save
-      redirect_to post_path(@comment.post, anchor: "comment-#{@comment.id}")
+      redirect_to post_path(@post, anchor: "comment-#{@comment.id}")
     else
-      @post = @comment.post
-      redirect_to(@comment.post, alert: @comment.errors.full_messages)
+      redirect_to(@post, alert: @comment.errors.full_messages)
     end
   end
 

@@ -3,8 +3,8 @@
 class CreatePostLikes < ActiveRecord::Migration[6.1]
   def change
     create_table :post_likes do |t|
-      t.belongs_to :user
-      t.belongs_to :post
+      t.belongs_to :user, null: false
+      t.belongs_to :post, null: false
 
       t.timestamps
     end
