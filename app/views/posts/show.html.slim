@@ -19,7 +19,7 @@ p
       = distance_of_time_in_words(Time.current, @post.created_at)
   div
     span.me-2
-      = @post.likes.count
+      = @post.likes.size
     - like = current_user.find_like(@post) if current_user
     - if like.nil?
       = link_to 'Like', post_likes_path(@post), method: :post
