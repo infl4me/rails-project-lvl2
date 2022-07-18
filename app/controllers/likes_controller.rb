@@ -8,7 +8,7 @@ class LikesController < ApplicationController
     @like = @post.likes.new(user: current_user)
 
     if @like.save
-      redirect_to post_path(@post)
+      redirect_to @post
     else
       redirect_to(@post, alert: t('errors.general'))
     end

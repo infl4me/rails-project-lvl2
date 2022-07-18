@@ -10,6 +10,8 @@ class PostsController < ApplicationController
 
   def show
     @comment = PostComment.new
+    @shallow_comments = @post.comments.shallow
+    @like = current_user.find_like(@post) if current_user
   end
 
   def new

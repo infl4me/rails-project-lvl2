@@ -20,18 +20,16 @@ p
   div
     span.me-2
       = @post.likes.size
-    - like = current_user.find_like(@post) if current_user
-    - if like.nil?
+    - if @like.nil?
       = link_to 'Like', post_likes_path(@post), method: :post
     - else
-      = link_to 'Unlike', post_like_path(@post, like), method: :delete
+      = link_to 'Unlike', post_like_path(@post, @like), method: :delete
 
 = simple_form_for @comment, url: post_comments_path(@post) do |f|
   = f.input :content, label: false
   = f.button :submit, t('posts.create_comment'), class: 'btn btn-primary mt-3'
 
-- shallow_comments = @post.comments.shallow
-- unless shallow_comments.empty?
+- if @shallow_comments.any?
   h2.mt-5 = "#{t('posts.comments')}:"
-  - @post.comments.shallow.each do |comment|
+  - @shallow_comments.each do |comment|
     = render 'comments/comment', comment: comment
