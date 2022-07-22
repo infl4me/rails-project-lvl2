@@ -4,7 +4,7 @@ require 'application_system_test_case'
 
 class CommentsTest < ApplicationSystemTestCase
   setup do
-    @comment = comments(:one)
+    @comment = comments(:post_comment_one)
   end
 
   test 'visiting the index' do
