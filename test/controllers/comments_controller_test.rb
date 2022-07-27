@@ -24,7 +24,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
       post post_comments_path(@post), params: { post_comment: { content: 'blablabla', parent_id: @post_comment.id } }
     end
 
-    assert_equal(@post_comment, PostComment.last.parent)
+    assert { @post_comment == PostComment.last.parent }
 
     assert_redirected_to(/#{post_path(@post)}/)
   end
