@@ -20,13 +20,14 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not decrement more than once from single user' do
-    post post_likes_path(@post)
+    post_two_like = post_likes(:post_two_like)
+    post_two = posts(:post_two)
+
     assert_difference('PostLike.count', -1) do
-      like_id = PostLike.last.id
-      delete post_like_path(@post, like_id)
-      delete post_like_path(@post, like_id)
+      delete post_like_path(post_two, post_two_like)
+      delete post_like_path(post_two, post_two_like)
     end
 
-    assert_redirected_to post_path(@post)
+    assert_redirected_to post_path(post_two)
   end
 end

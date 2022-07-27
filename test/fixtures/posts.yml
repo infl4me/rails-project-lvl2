@@ -3,3 +3,11 @@ post_one:
   body: body1
   creator: user_one
   category: category_one
+  likes_count: 0
+
+post_two:
+  title: title2
+  body: body2
+  creator: user_one
+  category: category_one
+  likes_count: 1
