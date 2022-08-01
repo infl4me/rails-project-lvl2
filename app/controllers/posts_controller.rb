@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
-  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :set_post, only: %i[show]
+  before_action :authenticate_user!, only: %i[new create]
 
   def index
     @posts = Post.all
@@ -26,22 +26,6 @@ class PostsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit; end
-
-  def update
-    if @post.update(post_params)
-      redirect_to @post
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @post.destroy
-
-    redirect_to root_path, status: :see_other
   end
 
   private

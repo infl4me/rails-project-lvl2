@@ -1,0 +1,7 @@
+- flash.each do |type, msg|
+  div class="alert alert-#{type == 'alert' ? 'danger' : 'info'}"
+    - if msg.is_a?(Array)
+      - msg.each do |cur_msg|
+        div = cur_msg
+    - else
+      = msg
