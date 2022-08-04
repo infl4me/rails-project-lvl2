@@ -22,11 +22,12 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create post' do
-    assert_difference('Post.count') do
-      post posts_url, params: { post: { body: @post.body, category_id: Category.first.id, title: @post.title, creator_id: User.first.id } }
-    end
+    body = Faker::Lorem.paragraph
 
-    assert_redirected_to post_url(Post.last)
+    post posts_url, params: { post: { body: body, category_id: Category.first.id, title: @post.title, creator_id: User.first.id } }
+
+    post = Post.find_by!(body: body)
+    assert_redirected_to post_url(post)
   end
 
   test 'should show post' do

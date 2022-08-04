@@ -12,20 +12,21 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create comment' do
-    assert_difference('PostComment.count') do
-      post post_comments_path(@post), params: { post_comment: { content: 'blablabla' } }
-    end
+    content = Faker::Lorem.paragraph
 
+    post post_comments_path(@post), params: { post_comment: { content: content } }
+
+    PostComment.find_by!(content: content)
     assert_redirected_to(/#{post_path(@post)}/)
   end
 
   test 'should create child comment' do
-    assert_difference('PostComment.count') do
-      post post_comments_path(@post), params: { post_comment: { content: 'blablabla', parent_id: @post_comment.id } }
-    end
+    content = Faker::Lorem.paragraph
 
-    assert { @post_comment == PostComment.last.parent }
+    post post_comments_path(@post), params: { post_comment: { content: content, parent_id: @post_comment.id } }
 
+    child_comment = PostComment.find_by!(content: content)
+    assert { @post_comment == child_comment.parent }
     assert_redirected_to(/#{post_path(@post)}/)
   end
 end
