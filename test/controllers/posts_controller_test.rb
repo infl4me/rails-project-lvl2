@@ -22,11 +22,12 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create post' do
+    title = Faker::Lorem.word
     body = Faker::Lorem.paragraph
 
-    post posts_url, params: { post: { body: body, category_id: Category.first.id, title: @post.title, creator_id: User.first.id } }
+    post posts_url, params: { post: { body: body, category_id: Category.first.id, title: title, creator_id: User.first.id } }
 
-    post = Post.find_by!(body: body)
+    post = Post.find_by!(body: body, title: title)
     assert_redirected_to post_url(post)
   end
 
